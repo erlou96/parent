@@ -1,0 +1,29 @@
+server:
+  port: 8081
+## hbase相关配置
+hbase:
+  zookeeper:
+    quorum: 10.12.25.208
+    property:
+      clientPort: 2181
+zookeeper:
+  znode:
+    parent: /hbase
+spring:
+  application:
+    name: kafka
+  kafka:
+    bootstrap-servers: 192.168.137.135:9092
+    producer:
+      retries: 0
+      batch-size: 16000
+      buffer-memory: 3355443
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test_group_key
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
