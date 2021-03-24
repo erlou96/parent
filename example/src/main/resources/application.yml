@@ -12,6 +12,13 @@ zookeeper:
 spring:
   application:
     name: kafka
+  datasource:
+    url: jdbc:mysql://dx-dev-test1026:3306/spring-demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    #type: com.alibaba.druid.pool.DruidDataSource
+
   kafka:
     bootstrap-servers: 192.168.137.135:9092
     producer:
@@ -27,3 +34,15 @@ spring:
       auto-commit-interval: 100
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+mybatis-plus:
+  global-config:
+    banner: false
+  # 关闭MP3.0自带的banner
+    db-config:
+      #主键类型  0:"数据库ID自增",1:"该类型为未设置主键类型", 2:"用户输入ID",3:"全局唯一ID (数字类型唯一ID)", 4:"全局唯一ID UUID",5:"字符串全局唯一ID (idWorker 的字符串表示)";
+      id-type: 4
+      # 默认数据库表下划线命名
+      table-underline: true
+  mapper-locations: classpath*:xml/*Mapper.xml
+  type-enums-package: com.demo.common.enums

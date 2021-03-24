@@ -1,18 +1,34 @@
 package com.demo.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.demo.common.enums.Gender;
+
 import java.io.Serializable;
 import java.util.function.Consumer;
 
+@TableName(value = "Student")
 public class Student implements Serializable {
+    @TableId(value = "s_id")
+    private String id;
+    @TableField(value = "s_name")
     private String name;
-    private int age;
+    @TableField(value = "s_birth")
+    private String birth;
+    @TableField(value = "s_sex")
+    private Gender sex;
+
 
     public Student() {
     }
 
-    public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,22 +39,26 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getBirth() {
+        return birth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
-    public static void main(String[] args) {
-        Student stu = new Student("zhangsan",13);
-        Consumer<Student> consumer = student -> {
-            student.setAge(19);
-            student.setName("wangwu");
-        };
-        consumer.accept(stu);
+    public Gender getSex() {
+        return sex;
+    }
 
-        System.out.println(stu.getAge());
+    public void setSex(Gender sex) {
+        this.sex = sex;
+    }
+
+    public Student(String id, String name, String birth, Gender sex) {
+        this.id = id;
+        this.name = name;
+        this.birth = birth;
+        this.sex = sex;
     }
 }

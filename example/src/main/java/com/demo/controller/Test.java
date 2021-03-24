@@ -1,4 +1,4 @@
-package com.demo.example.controller;
+package com.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * 随着springboot启动提前初始化，并且只会调用一次
+ */
 @Component
 @PropertySource("classpath:common/testFile.properties")
 public class Test implements InitializingBean {

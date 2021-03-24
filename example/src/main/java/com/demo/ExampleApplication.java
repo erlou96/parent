@@ -1,5 +1,6 @@
 package com.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScans;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.demo.*"})
+@MapperScan("com.demo.mapper")
 public class ExampleApplication {
 
 //    @Autowired
@@ -27,11 +29,4 @@ public class ExampleApplication {
 //            kafkaSender.sendLog("1");
 //        }
 //    }
-
-//    @PostConstruct
-//    public void run(){
-//        System.out.println("df -h");
-//    }
-
-
 }

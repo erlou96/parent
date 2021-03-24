@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 查询平均成绩及格学生信息 -->
+<mapper namespace="com.demo.mapper.ScoreMapper">
+    <resultMap id="having_score" type="com.demo.common.vo.StudentScoreVo">
+        <result column="s_id" property="studentId" jdbcType="VARCHAR"></result>
+        <result column="s_name" property="studentName" jdbcType="VARCHAR"></result>
+        <result column="avg_score" property="score" jdbcType="DOUBLE" javaType="double"></result>
+    </resultMap>
+    <select id="queryScoreList" resultMap="having_score">
+        select
+            s.s_id,
+            s.s_name,
+            c.avg_score
+        from Student s
+            join (
+                select
+                   s_id ,
+                   avg(s_score) AS avg_score
+                from Score
+                group by s_id
+                having avg_score > 60) c
+            on s.s_id = c.s_id;
+        ;
+    </select>
+</mapper>

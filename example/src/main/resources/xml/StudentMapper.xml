@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.StudentMapper">
+
+    <resultMap id="Student" type="com.demo.pojo.Student">
+        <result column="s_id" property="id" jdbcType="VARCHAR"/>
+        <result column="s_name" property="name" jdbcType="VARCHAR"/>
+        <result column="s_birth" property="birth" jdbcType="VARCHAR"/>
+        <result column="s_sex" property="sex" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 根据jobClassName查询 -->
+    <select id="queryStudentList" resultMap="Student">
+        select * from Student
+    </select>
+</mapper>

@@ -1,4 +1,4 @@
-package com.demo.example.controller;
+package com.demo.controller;
 
 import com.demo.service.ZkConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
