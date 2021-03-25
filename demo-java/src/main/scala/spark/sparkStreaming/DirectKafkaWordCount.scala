@@ -1,4 +1,4 @@
-package sparkStreaming
+package spark.sparkStreaming
 
 import org.apache.kafka.clients.consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
@@ -53,8 +53,6 @@ object DirectKafkaWordCount {
     ssc.start()
 
     ssc.awaitTermination()
-
-    // hello
 
   }
 

@@ -1,4 +1,4 @@
-package sparkSql
+package spark.sparkSql
 
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
@@ -18,13 +18,13 @@ object SparkSQLExample {
 
     // runInferSchemaExample(spark)
 
-    runProgrammaticSchemaExample(spark)
+    // runProgrammaticSchemaExample(spark)
 
   }
 
   private def runBasicDataFrameExample(spark: SparkSession): Unit = {
 
-    val df = spark.read.json("D:\\code\\test\\src\\main\\resources\\spark\\people.json")
+    val df = spark.read.json("demo-java/src/main/resources/spark/people.json")
 
     df.show()
 
@@ -60,7 +60,7 @@ object SparkSQLExample {
 
     primitiveDS.map(_ + 1).collect()
 
-    val path = "D:\\code\\test\\src\\main\\resources\\spark\\people.json"
+    val path = "demo-java/src/main/resources/spark/people.json"
 
     val peopleDS = spark.read.json(path).as[Person]
 
@@ -71,7 +71,7 @@ object SparkSQLExample {
   private def runInferSchemaExample(spark: SparkSession) = {
     import spark.implicits._
 
-    val peopleDF = spark.sparkContext.textFile("file:///D:/code/test/src/main/resources/spark/people.txt")
+    val peopleDF = spark.sparkContext.textFile("demo-java/src/main/resources/spark/people.txt")
 
     val lines = peopleDF.map(_.split(","))
 
@@ -94,7 +94,7 @@ object SparkSQLExample {
 
   private def runProgrammaticSchemaExample(spark:SparkSession) = {
     import spark.implicits._
-    val peopleRDD = spark.sparkContext.textFile("file:///D:/code/test/src/main/resources/spark/people.txt")
+    val peopleRDD = spark.sparkContext.textFile("demo-java/src/main/resources/spark/people.txt")
 
     val schemaString = "name age"
 
